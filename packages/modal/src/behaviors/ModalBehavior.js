@@ -14,15 +14,15 @@ export default class ModalBehavior extends Component {
     /**
      * A function to render content of the modal
      */
-    children: PropTypes.func
+    children: PropTypes.func,
   };
 
   /**
    * @param {MouseEvent} event
    */
-  handleCloseClick = event => {
+  handleCloseClick = (event) => {
     const { onCloseClick } = this.props;
-
+    // log this
     if (onCloseClick) {
       onCloseClick(event);
     }
@@ -31,7 +31,7 @@ export default class ModalBehavior extends Component {
   /**
    * @param {MouseEvent} event
    */
-  handleOverlayClick = event => {
+  handleOverlayClick = (event) => {
     const { onOverlayClick } = this.props;
 
     if (onOverlayClick) {
@@ -42,7 +42,7 @@ export default class ModalBehavior extends Component {
   /**
    * @param {MouseEvent} event
    */
-  handleWindowClick = event => {
+  handleWindowClick = (event) => {
     event.stopPropagation();
   };
 
@@ -50,7 +50,7 @@ export default class ModalBehavior extends Component {
     return this.props.children({
       handleCloseClick: this.handleCloseClick,
       handleOverlayClick: this.handleOverlayClick,
-      handleWindowClick: this.handleWindowClick
+      handleWindowClick: this.handleWindowClick,
     });
   }
 }

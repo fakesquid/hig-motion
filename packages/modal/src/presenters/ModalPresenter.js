@@ -49,11 +49,11 @@ export default class ModalPresenter extends Component {
     /**
      * Style of the modal shell
      */
-    type: PropTypes.string
+    type: PropTypes.string,
   };
 
   static defaultProps = {
-    type: types.STANDARD
+    type: types.STANDARD,
   };
 
   titleId = generateId("modal-title");

@@ -42,7 +42,7 @@ export default class Modal extends Component {
     /**
      * Style of the modal shell
      */
-    type: PropTypes.string
+    type: PropTypes.string,
   };
 
   render() {

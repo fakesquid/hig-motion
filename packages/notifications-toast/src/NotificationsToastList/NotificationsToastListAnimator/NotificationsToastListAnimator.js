@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { css } from "emotion";
 import FlipMove from "react-flip-move";
 import { AVAILABLE_PLACEMENTS } from "../placements";
+import { motion, AnimatePresence } from "framer-motion";
 
 import stylesheet from "./NotificationsToastListAnimator.stylesheet";
 
@@ -11,11 +12,11 @@ const _ANIMATION_STAGGER_DELAY_BY = 1000;
 
 const offScreenStyles = ({ placement }) => ({
   transform: `translateY(${placement === "top" ? "-36px" : "36px"})`,
-  opacity: 0
+  opacity: 0,
 });
 
 const onScreenStyles = () => ({
-  transform: ""
+  transform: "",
 });
 
 export default class NotificationsToastListAnimator extends Component {
@@ -25,26 +26,41 @@ export default class NotificationsToastListAnimator extends Component {
 
     const enterAnimation = {
       from: offScreenStyles(this.props),
-      to: onScreenStyles()
+      to: onScreenStyles(),
     };
 
     const leaveAnimation = {
       from: onScreenStyles(),
-      to: offScreenStyles(this.props)
+      to: offScreenStyles(this.props),
     };
 
     return (
-      <FlipMove
-        className={css(styles.toastList)}
-        duration={_ANIMATION_DURATION}
-        staggerDelayBy={_ANIMATION_STAGGER_DELAY_BY}
-        easing="ease-out"
-        appearAnimation={enterAnimation}
-        enterAnimation={enterAnimation}
-        leaveAnimation={leaveAnimation}
-      >
-        {this.props.children}
-      </FlipMove>
+      // <FlipMove
+      //   className={css(styles.toastList)}
+      //   duration={_ANIMATION_DURATION}
+      //   staggerDelayBy={_ANIMATION_STAGGER_DELAY_BY}
+      //   easing="ease-out"
+      //   appearAnimation={enterAnimation}
+      //   enterAnimation={enterAnimation}
+      //   leaveAnimation={leaveAnimation}
+      // >
+      //   {this.props.children}
+      // </FlipMove>
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{
+            zIndex: 0,
+            x: -1000,
+            opacity: 0,
+          }}
+        >
+          {this.props.children}
+        </motion.div>
+      </AnimatePresence>
+
+      // <div>{this.props.children}</div>
     );
   }
 }
@@ -59,5 +75,5 @@ NotificationsToastListAnimator.propTypes = {
   /**
    * A list of Toast elements to render
    */
-  children: PropTypes.node
+  children: PropTypes.node,
 };
