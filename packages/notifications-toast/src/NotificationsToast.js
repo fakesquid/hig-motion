@@ -6,6 +6,7 @@ import { CloseSUI, CloseXsUI } from "@hig/icons";
 import RichText from "@hig/rich-text";
 import ThemeContext from "@hig/theme-context";
 import Typography from "@hig/typography";
+import { motion } from "framer-motion";
 
 import { STATUS_ICONS, AVAILABLE_STATUSES } from "./statuses";
 
@@ -38,13 +39,13 @@ export default class NotificationsToast extends Component {
     /**
      * Indicates the style of toast notification
      */
-    status: PropTypes.oneOf(AVAILABLE_STATUSES)
+    status: PropTypes.oneOf(AVAILABLE_STATUSES),
   };
 
   static defaultProps = {
     onDismissTitle: "Dismiss",
     showStatusIcon: true,
-    status: "primary"
+    status: "primary",
   };
 
   _renderImage = (themeData, metadata) => {
@@ -81,33 +82,43 @@ export default class NotificationsToast extends Component {
             metadata.densityId === "medium-density" ? CloseSUI : CloseXsUI;
 
           return (
-            <div className={css(styles.toast)}>
-              {this._renderImage(resolvedRoles, metadata)}
-              <div className={css(styles.toastBody)}>
-                <div className={css(styles.toastMessage)}>
-                  <RichText>
-                    <Typography
-                      style={{
-                        fontSize: "12px",
-                        maxWidth: "220px",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden"
-                      }}
-                    >
-                      {this.props.children}
-                    </Typography>
-                  </RichText>
-                  <div className={css(styles.toastDismiss)}>
-                    <IconButton
-                      title={onDismissTitle}
-                      icon={<CloseIcon />}
-                      type="transparent"
-                      onClick={this.props.onDismiss}
-                    />
+            <motion.div
+              initial={{ opacity: 0.5 }}
+              animate={{ y: 10, opacity: 1 }}
+              transition={{
+                y: { type: "spring", stiffness: 300 },
+                default: { duration: 1 },
+                ease: [0.17, 0.67, 0.83, 0.67],
+              }}
+            >
+              <div className={css(styles.toast)}>
+                {this._renderImage(resolvedRoles, metadata)}
+                <div className={css(styles.toastBody)}>
+                  <div className={css(styles.toastMessage)}>
+                    <RichText>
+                      <Typography
+                        style={{
+                          fontSize: "12px",
+                          maxWidth: "220px",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {this.props.children}
+                      </Typography>
+                    </RichText>
+                    <div className={css(styles.toastDismiss)}>
+                      <IconButton
+                        title={onDismissTitle}
+                        icon={<CloseIcon />}
+                        type="transparent"
+                        onClick={this.props.onDismiss}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         }}
       </ThemeContext.Consumer>
