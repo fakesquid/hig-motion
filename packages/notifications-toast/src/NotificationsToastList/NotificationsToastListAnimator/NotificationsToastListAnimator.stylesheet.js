@@ -13,10 +13,10 @@ export default function stylesheet(placement) {
     toastList: {
       display: `flex`,
       minWidth: `340px`,
-      ...(placement ? getStylesByPlacement(placement) : {}),
+      ...(placement ? getStylesByPlacement("bottom") : {}),
       "& > div": {
-        marginBottom: `10px`
-      }
-    }
+        marginBottom: `10px`,
+      },
+    },
   };
 }

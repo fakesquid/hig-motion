@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { css } from "emotion";
 import FlipMove from "react-flip-move";
 import { AVAILABLE_PLACEMENTS } from "../placements";
-import { motion, AnimatePresence } from "framer-motion";
 
 import stylesheet from "./NotificationsToastListAnimator.stylesheet";
 
@@ -46,20 +45,8 @@ export default class NotificationsToastListAnimator extends Component {
       // >
       //   {this.props.children}
       // </FlipMove>
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{
-            zIndex: 0,
-            x: -1000,
-            opacity: 0,
-          }}
-        >
-          {this.props.children}
-        </motion.div>
-      </AnimatePresence>
 
+      <div className={css(styles.toastList)}>{this.props.children}</div>
       // <div>{this.props.children}</div>
     );
   }

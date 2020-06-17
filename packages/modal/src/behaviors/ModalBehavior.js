@@ -22,7 +22,7 @@ export default class ModalBehavior extends Component {
    */
   handleCloseClick = (event) => {
     const { onCloseClick } = this.props;
-    // log this
+
     if (onCloseClick) {
       onCloseClick(event);
     }

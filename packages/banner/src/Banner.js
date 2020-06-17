@@ -54,7 +54,7 @@ export default class Banner extends Component {
     /** Animation; Determines the visibility of the banner */
     isVisible: PropTypes.bool,
     /** The displayed message */
-    children: PropTypes.node
+    children: PropTypes.node,
   };
 
   /** @type {BannerProps | any} */
@@ -63,7 +63,7 @@ export default class Banner extends Component {
   /**
    * @param {import("./BannerContainer").PresenterBag} presenterBag
    */
-  renderPresenter = presenterBag => {
+  renderPresenter = (presenterBag) => {
     const presenterProps = { ...this.props, ...presenterBag };
     const { children, ...otherProps } = presenterProps;
 

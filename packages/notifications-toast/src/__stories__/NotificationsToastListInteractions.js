@@ -7,6 +7,7 @@ import { AVAILABLE_STATUSES } from "../statuses";
 import NotificationsToastList, {
   AVAILABLE_PLACEMENTS,
 } from "../NotificationsToastList";
+import { AnimatePresence } from "framer-motion";
 
 export default class NotificationsToastListInteractions extends React.Component {
   static propTypes = {
@@ -59,11 +60,13 @@ export default class NotificationsToastListInteractions extends React.Component 
         <Button onClick={this.addRandomToast} title="Add Random Toast" />
 
         <NotificationsToastList placement={this.props.placement}>
-          {this.state.toasts.map((toast) =>
-            React.cloneElement(toast, {
-              onDismiss: this.removeToast.bind(this, toast),
-            })
-          )}
+          <AnimatePresence>
+            {this.state.toasts.map((toast) =>
+              React.cloneElement(toast, {
+                onDismiss: this.removeToast.bind(this, toast),
+              })
+            )}
+          </AnimatePresence>
         </NotificationsToastList>
       </div>
     );

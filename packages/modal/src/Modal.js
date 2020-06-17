@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 import ModalPresenter from "./presenters/ModalPresenter";
 import ModalBehavior from "./behaviors/ModalBehavior";
@@ -61,28 +62,31 @@ export default class Modal extends Component {
     const { className } = otherProps;
 
     return (
-      <ModalBehavior
-        onCloseClick={onCloseClick}
-        onOverlayClick={onOverlayClick}
-        open={open}
-      >
-        {({ handleCloseClick, handleOverlayClick, handleWindowClick }) => (
-          <ModalPresenter
-            className={className}
-            closeButtonAriaLabel={closeButtonAriaLabel}
-            headerChildren={headerChildren}
-            onCloseClick={handleCloseClick}
-            onOverlayClick={handleOverlayClick}
-            onWindowClick={handleWindowClick}
-            open={open}
-            stylesheet={stylesheet}
-            title={title}
-            type={type}
-          >
-            {children}
-          </ModalPresenter>
-        )}
-      </ModalBehavior>
+      <motion.div>
+        <ModalBehavior
+          onCloseClick={onCloseClick}
+          onOverlayClick={onOverlayClick}
+          open={open}
+        >
+          {({ handleCloseClick, handleOverlayClick, handleWindowClick }) => (
+            <ModalPresenter
+              className={className}
+              closeButtonAriaLabel={closeButtonAriaLabel}
+              headerChildren={headerChildren}
+              onCloseClick={handleCloseClick}
+              onOverlayClick={handleOverlayClick}
+              onWindowClick={handleWindowClick}
+              open={open}
+              // isOpen={this.state.isOpen}
+              stylesheet={stylesheet}
+              title={title}
+              type={type}
+            >
+              {children}
+            </ModalPresenter>
+          )}
+        </ModalBehavior>
+      </motion.div>
     );
   }
 }

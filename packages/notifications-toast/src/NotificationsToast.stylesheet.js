@@ -8,7 +8,7 @@ function getRulesByStatus(themeData, status) {
       return { borderLeftColor: themeData["colorScheme.status.success"] };
     default:
       return {
-        borderLeftColor: themeData["basics.colors.primary.autodeskBlue.500"]
+        borderLeftColor: themeData["basics.colors.primary.autodeskBlue.500"],
       };
   }
 }
@@ -30,14 +30,14 @@ export default function stylesheet(themeData, status) {
       } 3px`,
       borderLeft: `3px solid transparent`,
       backgroundColor: themeData["colorScheme.surface.level100"],
-      ...(status ? getRulesByStatus(themeData, status) : {})
+      ...(status ? getRulesByStatus(themeData, status) : {}),
     },
     toastImageContainer: {
       boxSizing: `border-box`,
       display: `flex`,
       justifyContent: `center`,
       minWidth: `70px`,
-      padding: `0 10px 0 12px`
+      padding: `0 10px 0 12px`,
     },
     toastBody: {
       display: `flex`,
@@ -45,14 +45,14 @@ export default function stylesheet(themeData, status) {
       justifyContent: `space-between`,
       flexGrow: 1,
       "&:first-of-type": {
-        marginLeft: `16px`
-      }
+        marginLeft: `16px`,
+      },
     },
     toastMessage: {
       flexGrow: 1,
       display: `flex`,
       position: `relative`,
-      paddingRight: `36px`
+      paddingRight: `36px`,
     },
     toastDismiss: {
       position: `absolute`,
@@ -60,12 +60,12 @@ export default function stylesheet(themeData, status) {
       top: `-9px`,
       right: 0,
       // eslint-disable-next-line prettier/prettier
-      "svg": {
+      svg: {
         // eslint-disable-next-line prettier/prettier
-        "path": {
-          fill: themeData["colorScheme.icon.default"]
-        }
-      }
-    }
+        path: {
+          fill: themeData["colorScheme.icon.default"],
+        },
+      },
+    },
   };
 }

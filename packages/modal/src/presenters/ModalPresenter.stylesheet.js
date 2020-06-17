@@ -20,21 +20,21 @@ export default function stylesheet(props, themeData) {
     modal: {
       wrapper: {
         color: themeData["modal.fontColor"],
-        opacity: open ? 1.0 : 0,
-        pointerEvents: open ? "visible" : "none",
-        transition: "all ease 0.2s",
-        transitionDelay: open ? "0s" : "0.2s"
+        // opacity: open ? 1.0 : 0,
+        // pointerEvents: open ? "visible" : "none",
+        // transition: "all ease 0.2s",
+        // transitionDelay: open ? "0s" : "0.2s",
       },
 
-      overlay: {
-        backgroundColor: themeData["modal.overlayColor"],
-        bottom: 0,
-        left: 0,
-        position: "fixed",
-        right: 0,
-        top: 0,
-        zIndex: MODAL_LAYER
-      },
+      // overlay: {
+      //   backgroundColor: themeData["modal.overlayColor"],
+      //   bottom: 0,
+      //   left: 0,
+      //   position: "fixed",
+      //   right: 0,
+      //   top: 0,
+      //   zIndex: MODAL_LAYER,
+      // },
 
       window: {
         background: themeData["modal.shell.backgroundColor"],
@@ -45,16 +45,16 @@ export default function stylesheet(props, themeData) {
         left: "50%",
         height: themeData["modal.shell.minHeight"],
         width: themeData["modal.shell.minWidth"],
-        opacity: open ? 1.0 : 0,
+        // opacity: open ? 1.0 : 0,
         outline: "none",
         position: "fixed",
         top: "128px",
         transform: "translateX(-50%)",
         zIndex: MODAL_BODY_LAYER,
 
-        animation: open ? "none" : `${WindowClosing} 0.4s`,
-        transition: "all ease 0.2s",
-        transitionDelay: "0.2s"
+        // animation: open ? "none" : `${WindowClosing} 0.4s`,
+        // transition: "all ease 0.2s",
+        // transitionDelay: "0.2s",
       },
 
       header: {
@@ -71,8 +71,8 @@ export default function stylesheet(props, themeData) {
         zIndex: MODAL_HEADER_LAYER,
 
         ...(type === types.ALTERNATE && {
-          backgroundColor: themeData["modal.header.backgroundColor"]
-        })
+          backgroundColor: themeData["modal.header.backgroundColor"],
+        }),
       },
 
       headerContent: {
@@ -80,16 +80,16 @@ export default function stylesheet(props, themeData) {
         display: "flex",
         justifyContent: "space-between",
         "svg *": {
-          fill: themeData["modal.fontColor"]
+          fill: themeData["modal.fontColor"],
         },
         "&:hover, &:focus": {
           "svg *": {
-            fill: themeData["modal.fontColor"]
-          }
+            fill: themeData["modal.fontColor"],
+          },
         },
         ...(type === types.ALTERNATE && {
-          backgroundColor: themeData["modal.header.backgroundColor"]
-        })
+          backgroundColor: themeData["modal.header.backgroundColor"],
+        }),
       },
 
       body: {
@@ -98,7 +98,7 @@ export default function stylesheet(props, themeData) {
         flexDirection: "column",
         overflow: "hidden",
         position: "relative",
-        minHeight: themeData["modal.body.minHeight"]
+        minHeight: themeData["modal.body.minHeight"],
       },
 
       bodyContent: {
@@ -106,8 +106,8 @@ export default function stylesheet(props, themeData) {
         flex: "1 1 auto",
         overflowX: "auto",
         overflowY: "auto",
-        padding: themeData["modal.paddingHorizontal"]
-      }
-    }
+        padding: themeData["modal.paddingHorizontal"],
+      },
+    },
   };
 }
