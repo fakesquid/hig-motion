@@ -83,13 +83,23 @@ export default class NotificationsToast extends Component {
 
           return (
             <motion.div
-              initial={{ opacity: 0.5 }}
-              animate={{ y: 10, opacity: 1 }}
-              transition={{
-                y: { type: "spring", stiffness: 300 },
-                default: { duration: 1 },
-                ease: [0.17, 0.67, 0.83, 0.67],
+              // style={{ marginTop: "8px" }}
+              //EXPRESSIVE
+              positionTransition={{
+                type: "spring",
+                damping: 300,
+                stiffness: 50,
               }}
+              // initial={{ opacity: 0.6 }}
+              // animate={{ y: 36, opacity: 1 }}
+              // transition={{
+              //   y: { type: "spring", stiffness: 100, damping: 300 },
+              // }}
+              // exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              // MINIMAL
+              initial={{ opacity: 0.3 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.2 } }}
             >
               <div className={css(styles.toast)}>
                 {this._renderImage(resolvedRoles, metadata)}

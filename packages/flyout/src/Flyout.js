@@ -75,7 +75,7 @@ export default class Flyout extends Component {
      */
     openOnHoverDelay: PropTypes.number,
     /** Function to modify the component's styles */
-    stylesheet: PropTypes.func
+    stylesheet: PropTypes.func,
   };
 
   static defaultProps = {
@@ -93,7 +93,7 @@ export default class Flyout extends Component {
       handleScroll,
       maxHeight,
       className,
-      stylesheet
+      stylesheet,
     }) {
       return (
         <PanelContainerPresenter
@@ -111,12 +111,12 @@ export default class Flyout extends Component {
           </PanelPresenter>
         </PanelContainerPresenter>
       );
-    }
+    },
   };
 
   /** @type {State} */
   state = {
-    open: this.props.defaultOpen
+    open: this.props.defaultOpen,
   };
 
   componentDidMount() {
@@ -153,7 +153,7 @@ export default class Flyout extends Component {
       fallbackAnchorPoints,
       panelRect,
       pointerRect,
-      viewportRect
+      viewportRect,
     });
 
     if (alterCoordinates) {
@@ -161,7 +161,7 @@ export default class Flyout extends Component {
         actionRect,
         panelRect,
         pointerRect,
-        viewportRect
+        viewportRect,
       };
 
       return alterCoordinates(coordinates, rects);
@@ -214,7 +214,7 @@ export default class Flyout extends Component {
   /**
    * @param {MouseEvent} event
    */
-  handleBodyClick = event => {
+  handleBodyClick = (event) => {
     const { wrapperRef } = this.state;
     const { onClickOutside } = this.props;
     const flyoutClicked =
@@ -228,28 +228,28 @@ export default class Flyout extends Component {
   /**
    * @param {HTMLElement} actionRef
    */
-  refAction = actionRef => {
+  refAction = (actionRef) => {
     this.setState({ actionRef });
   };
 
   /**
    * @param {SVGSVGElement} pointerRef
    */
-  refPointer = pointerRef => {
+  refPointer = (pointerRef) => {
     this.setState({ pointerRef });
   };
 
   /**
    * @param {HTMLElement} panelRef
    */
-  refPanel = panelRef => {
+  refPanel = (panelRef) => {
     this.setState({ panelRef });
   };
 
   /**
    * @param {HTMLDivElement} wrapperRef
    */
-  refWrapper = wrapperRef => {
+  refWrapper = (wrapperRef) => {
     this.setState({ wrapperRef });
   };
 
@@ -276,7 +276,7 @@ export default class Flyout extends Component {
       handleScroll: onScroll,
       innerRef: this.refPanel,
       className,
-      stylesheet
+      stylesheet,
     };
   }
 
@@ -297,7 +297,7 @@ export default class Flyout extends Component {
     if (typeof panel === "function") {
       return panel({
         ...this.createPanelPayload(),
-        transitionStatus
+        transitionStatus,
       });
     }
 
@@ -316,20 +316,20 @@ export default class Flyout extends Component {
       return React.cloneElement(children, {
         onClick: combineEventHandlers(handleChildClick, children.props.onClick),
         onMouseEnter,
-        onMouseLeave
+        onMouseLeave,
       });
     }
 
     return children;
   }
 
-  renderPresenter = transitionStatus => {
+  renderPresenter = (transitionStatus) => {
     const {
       handleChildMouseEnter,
       handleChildMouseLeave,
       refAction,
       refPointer,
-      refWrapper
+      refWrapper,
     } = this;
     const { openOnHoverDelay, pointer, stylesheet, ...otherProps } = this.props;
     const { className } = otherProps;
@@ -337,7 +337,7 @@ export default class Flyout extends Component {
     const {
       anchorPoint,
       containerPosition,
-      pointerPosition
+      pointerPosition,
     } = this.getCoordinates();
 
     return (

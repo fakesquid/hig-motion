@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { css } from "emotion";
 import NotificationsToastListAnimator from "./NotificationsToastListAnimator";
 import { placements, AVAILABLE_PLACEMENTS } from "./placements";
-import { motion, AnimatePresence } from "framer-motion";
 
 import stylesheet from "./NotificationsToastList.stylesheet";
 

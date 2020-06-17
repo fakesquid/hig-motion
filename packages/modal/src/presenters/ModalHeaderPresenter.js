@@ -6,6 +6,7 @@ import Typography from "@hig/typography";
 import { CloseSUI, CloseMUI } from "@hig/icons";
 import { createCustomClassNames } from "@hig/utils";
 import { css, cx } from "emotion";
+import stylesheet from "./ModalPresenter.stylesheet";
 
 export default class ModalHeaderPresenter extends Component {
   static propTypes = {
@@ -33,11 +34,11 @@ export default class ModalHeaderPresenter extends Component {
     /**
      * Title of the modal
      */
-    title: PropTypes.node
+    title: PropTypes.node,
   };
 
   static defaultProps = {
-    closeButtonAriaLabel: "close"
+    closeButtonAriaLabel: "close",
   };
 
   renderChildren() {
@@ -54,6 +55,7 @@ export default class ModalHeaderPresenter extends Component {
       children,
       closeButtonAriaLabel,
       id,
+      isOpen,
       onCloseClick,
       title,
       styles,
@@ -92,7 +94,7 @@ export default class ModalHeaderPresenter extends Component {
                   style={{
                     fontSize: `inherit`,
                     fontWeight: `inherit`,
-                    lineHeight: `inherit`
+                    lineHeight: `inherit`,
                   }}
                 >
                   {title}
